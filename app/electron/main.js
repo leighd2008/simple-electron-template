@@ -16,7 +16,7 @@ app.whenReady().then(() => {
   })
   
   // Load our HTML file
-  window.loadFile("index.html");
+  window.loadFile("app/dist/index.html");
 });
 
 //  This method is called when Electron has finished initializing
