@@ -1,7 +1,8 @@
 const { app, BrowserWindow } = require("electron");
+const isDevelopment = process.env.NODE_ENV === "development";
 
 // This method is called when Electron has finished initializing
-app.whenReady().then(() => {
+const createWindow = () => {
   // Create a new window
   const window = new BrowserWindow({
     width: 800,
@@ -16,9 +17,13 @@ app.whenReady().then(() => {
   })
   
   // Load our HTML file
-  //window.loadFile("app/dist/index.html"))
-  window.loadFile("http://localhost:40992");
-});
+  if (isDevelopment) {
+    window.loadFile("http://localhost:40992");
+  } else {
+    console.log("prod");
+    window.loadFile("app/dist/index.html");
+  }
+}
 
 //  This method is called when Electron has finished initializing
 app.whenReady().then(() => {
